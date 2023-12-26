@@ -30,14 +30,24 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
+      appBarTitle: appBarTitle(),
       body: body(),
+    );
+  }
+
+  Widget appBarTitle() {
+    return const Text(
+      "Giriş Yap",
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+      ),
     );
   }
 
   Widget body() {
     return SingleChildScrollView(
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Form(
         key: formkey,
         autovalidateMode: AutovalidateMode.always,
@@ -45,18 +55,28 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
-              height: 150,
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                facebookSignInButton(),
+                const SizedBox(width: 20),
+                googleSignInButton()
+              ],
             ),
-            titleTextField(),
             const SizedBox(height: 20),
+            titleTextField("E-Posta", kBlackColor, 15),
+            const SizedBox(height: 10),
             emailTextField(),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
+            titleTextField("Şifre", kBlackColor, 15),
+            const SizedBox(height: 10),
             passwordTextField(),
             const SizedBox(height: 20),
-            forgotPasswordButton(),
             signInButton(),
+            const SizedBox(height: 15),
             signUpButton(),
+            const SizedBox(height: 10),
+            forgotPasswordButton(),
           ],
         ),
       ),
@@ -64,13 +84,12 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   // TextFormField alanlarının üstünde bulunan başlıkları oluşturmayı sağlar.
-  Text titleTextField() {
-    return const Text(
-      "Login",
+  Text titleTextField(String text, Color myColor, double fontSize) {
+    return Text(
+      text,
       style: TextStyle(
-        fontSize: 36.41,
-        fontWeight: FontWeight.bold,
-        color: kBlackColor,
+        fontSize: fontSize,
+        color: myColor,
       ),
     );
   }
@@ -92,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
         }
       },
       decoration: const InputDecoration(
-        hintText: "Your e-mail or phone",
+        hintText: "E-Posta",
       ),
     );
   }
@@ -110,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       obscureText: !_passwordVisible,
       decoration: InputDecoration(
-        hintText: 'Password',
+        hintText: 'Şifre',
         suffixIcon: IconButton(
           icon: Icon(
             _passwordVisible ? Icons.visibility : Icons.visibility_off,
@@ -132,9 +151,10 @@ class _LoginScreenState extends State<LoginScreen> {
       child: TextButton(
         onPressed: () {},
         child: const Text(
-          "Forgot password?",
+          "Şifremi Unuttum",
           style: TextStyle(
-            color: kSplashBackgroundColor,
+            color: kBlueColor,
+            decoration: TextDecoration.underline,
             shadows: [
               Shadow(
                 color: kShadowColor,
@@ -149,85 +169,134 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
 // Kullanıcının giriş yapmasını sağlayan TextButton'ı oluşturur.
-  Center signInButton() {
-    return Center(
-      child: TextButton(
-        onPressed: () async {
-          if (!formkey.currentState!.validate()) {
-            snackbarService
-                .showWarningSnackBar("Lütfen geçerli bilgileri girin.");
-          } else {
-            User? user = await authService.signIn(
-              emailController.text,
-              passwordController.text,
+  InkWell signInButton() {
+    return InkWell(
+      onTap: () async {
+        if (!formkey.currentState!.validate()) {
+          snackbarService
+              .showWarningSnackBar("Lütfen geçerli bilgileri girin.");
+        } else {
+          User? user = await authService.signIn(
+            emailController.text,
+            passwordController.text,
+          );
+          if (user != null) {
+            // ignore: use_build_context_synchronously
+            Navigator.pushNamed(
+              context,
+              homeScreenPath,
             );
-            if (user != null) {
-              // ignore: use_build_context_synchronously
-              Navigator.pushNamed(
-                context,
-                homeScreenPath,
-              );
-            } else {
-              snackbarService.showWarningSnackBar(
-                "Yanlış e-posta veya şifre.",
-              );
-            }
+          } else {
+            snackbarService.showWarningSnackBar(
+              "Yanlış e-posta veya şifre.",
+            );
           }
-        },
+        }
+      },
+      child: Container(
+        height: 45,
+        width: 500,
+        decoration: const BoxDecoration(
+          //borderRadius: BorderRadius.circular(28.5),
+          color: kBlueColor,
+        ),
+        child: const Center(
+          child: Text("Giriş Yap",
+              style: TextStyle(
+                  fontSize: 16,
+                  color: kWhiteColor,
+                  fontWeight: FontWeight.bold)),
+        ),
+      ),
+    );
+  }
+
+  InkWell signUpButton() {
+    return InkWell(
+      onTap: () => Navigator.pushNamedAndRemoveUntil(
+        context,
+        signUpScreenPath,
+        (route) => false,
+      ),
+      child: Container(
+        height: 45,
+        width: 500,
+        decoration: const BoxDecoration(
+          //borderRadius: BorderRadius.circular(28.5),
+          color: kGreyColor,
+        ),
+        child: const Center(
+          child: Text("Üye Ol",
+              style: TextStyle(
+                  fontSize: 16,
+                  color: kWhiteColor,
+                  fontWeight: FontWeight.bold)),
+        ),
+      ),
+    );
+  }
+
+  Expanded facebookSignInButton() {
+    return Expanded(
+      child: InkWell(
+        onTap: () => Navigator.pushNamedAndRemoveUntil(
+          context,
+          signUpScreenPath,
+          (route) => false,
+        ),
         child: Container(
           height: 60,
-          width: 248,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(28.5),
-            color: kSplashBackgroundColor,
+          decoration: const BoxDecoration(
+            //borderRadius: BorderRadius.circular(28.5),
+            color: kDarkblueColor,
           ),
-          child: const Center(
-            child: Text("LOGIN",
-                style: TextStyle(fontSize: 16, color: kWhiteColor)),
+          child: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.facebook_sharp),
+              SizedBox(width: 5),
+              Text(
+                "Facebook ile\nbağlan",
+                style: TextStyle(color: kWhiteColor),
+              )
+            ],
           ),
         ),
       ),
     );
   }
 
-  // Kullanıcı eğer hesaba sahip değilse signUp ekranına yönlendiren TextButton alanını oluşturur.
-  Center signUpButton() {
-    return Center(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            "Don't have an account?",
-            style: TextStyle(
-              color: kButtonGreyColor,
-              fontSize: 14,
-              shadows: [
-                Shadow(
-                  color: kShadowColor,
-                  offset: Offset(0, 4),
-                  blurRadius: 8,
-                ),
-              ],
-            ),
+  Expanded googleSignInButton() {
+    return Expanded(
+      child: InkWell(
+        onTap: () async {
+          User? user = await authService.gSignIn();
+          if (user != null) {
+            // ignore: use_build_context_synchronously
+            Navigator.pushNamed(
+              context,
+              homeScreenPath,
+            );
+          }
+        },
+        child: Container(
+          height: 60,
+          decoration: const BoxDecoration(
+            //borderRadius: BorderRadius.circular(28.5),
+            color: kBlueColor,
           ),
-          TextButton(
-            onPressed: () => Navigator.pushNamed(context, signUpScreenPath),
-            child: const Text(
-              "Sign Up",
-              style: TextStyle(
-                color: kSplashBackgroundColor,
-                fontSize: 14,
-                shadows: [
-                  Shadow(
-                    color: kShadowColor,
-                    offset: Offset(0, 4),
-                    blurRadius: 8,
-                  ),
-                ],
-              ),
-            ),
+          child: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.facebook_outlined),
+              SizedBox(width: 5),
+              Text(
+                "Google ile\nbağlan",
+                style: TextStyle(color: kWhiteColor),
+              )
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

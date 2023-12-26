@@ -1,8 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sports_app/Data/models/user_model.dart';
+import 'package:sports_app/Data/app_constant.dart';
 import 'package:sports_app/Services/auth_service.dart';
-import 'package:sports_app/Services/stream_service.dart';
+import 'package:sports_app/Utils/Widgets/drawer_content.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,19 +11,49 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  TextEditingController nameController = TextEditingController();
-
-  TextEditingController emailController = TextEditingController();
-
-  TextEditingController passwordController = TextEditingController();
+  @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: kBlueColor,
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              "mackolik",
+              style: TextStyle(
+                fontFamily: 'Poppins',
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.exit_to_app, color: kWhiteColor),
+            onPressed: () async {
+              await authService.signOut(context);
+              // ignore: use_build_context_synchronously
+            },
+          ),
+        ],
+      ),
+      drawer: const CustomDrawer(),
+    );
+  }
+}
+
+
+
+
+
+
+/*return Scaffold(
         appBar: AppBar(
           title: const Text('Home Screen'),
           actions: [
             IconButton(
-              icon: const Icon(Icons.exit_to_app),
+              icon: const Icon(Icons.exit_to_app, color: Colors.black),
               onPressed: () async {
                 await authService.signOut(context);
                 // ignore: use_build_context_synchronously
@@ -54,6 +83,4 @@ class _HomeScreenState extends State<HomeScreen> {
               }).toList(),
             );
           },
-        ));
-  }
-}
+        )); */

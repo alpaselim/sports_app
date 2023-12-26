@@ -46,6 +46,36 @@ class FireStoreService {
       snackbarService.showSuccessSnackBar("Kullanıcı Eklendi");
     });
   }
+
+  Future<void> addUserToFirestore(
+      String userId, String userName, String email) async {
+    await FirebaseFirestore.instance.collection('users').doc(userId).set({
+      'userName': userName,
+      'email': email,
+      // Diğer kullanıcı bilgilerini ekleyebilirsiniz.
+    });
+  }
+
+  Future<UserModel?> getUserById(String documentId) async {
+    try {
+      DocumentSnapshot userSnapshot = await users.doc(documentId).get();
+      if (userSnapshot.exists) {
+        // Veriyi dönüştürme işlemi
+        final Map<String, dynamic>? data =
+            userSnapshot.data() as Map<String, dynamic>?;
+
+        // Eğer veri varsa ve dönüştürme işlemi başarılıysa UserModel oluştur
+        if (data != null) {
+          UserModel userModel = UserModel.fromJson(data);
+          return userModel;
+        }
+      }
+    } catch (e) {
+      // ignore: avoid_print
+      print("Error fetching user by ID: $e");
+    }
+    return null;
+  }
 }
 
 final FireStoreService fireStoreService = FireStoreService();

@@ -7,7 +7,6 @@ import 'package:sports_app/Screens/HomeScreen/home_screen.dart';
 import 'package:sports_app/Screens/LoginScreen/login_screen.dart';
 import 'package:sports_app/Screens/SignUpScreen/sign_up_screen.dart';
 import 'package:sports_app/Screens/SplashScreen/splash_screen.dart';
-import 'package:sports_app/Screens/WelcomeScreen/welcome_screen.dart';
 import 'package:sports_app/firebase_options.dart';
 
 void main() async {
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Stock App',
+      title: 'Sports App',
       theme: appTheme,
       getPages: getPages,
       initialRoute: splashScreenPath,
@@ -32,10 +31,6 @@ class MyApp extends StatelessWidget {
 }
 
 List<GetPage<dynamic>>? getPages = [
-  GetPage(
-    name: welcomeScreenPath,
-    page: () => const WelcomeScreen(),
-  ),
   GetPage(
     name: splashScreenPath,
     page: () => const SplashScreen(),
