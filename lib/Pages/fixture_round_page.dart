@@ -95,7 +95,7 @@ class _FixtureScreenState extends State<FixtureScreen> {
                     ),
                     padding: const EdgeInsets.all(10),
                     child: Text('${currentWeek - 1}.hafta',
-                        style: const TextStyle(fontSize: 16)),
+                        style: const TextStyle(fontSize: 15)),
                   ),
                 Container(
                   height: 42,
@@ -108,7 +108,7 @@ class _FixtureScreenState extends State<FixtureScreen> {
                   child: Text('$currentWeek.hafta',
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 17,
+                          fontSize: 16,
                           color: kWhiteColor)),
                 ),
                 if (currentWeek < 38)
@@ -121,7 +121,7 @@ class _FixtureScreenState extends State<FixtureScreen> {
                     ),
                     padding: const EdgeInsets.all(10),
                     child: Text('${currentWeek + 1}.hafta',
-                        style: const TextStyle(fontSize: 16)),
+                        style: const TextStyle(fontSize: 15)),
                   ),
                 const SizedBox(
                   width: 5,
