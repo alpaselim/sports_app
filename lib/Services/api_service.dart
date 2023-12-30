@@ -22,7 +22,7 @@ class SoccerApi {
 
   static const headers = {
     'x-rapidapi-host': "v3.football.api-sports.io",
-    // 'x-rapidapi-key': "c886db8dc289d7973187aef5780213c6"
+    'x-rapidapi-key': "c886db8dc289d7973187aef5780213c6"
   };
 
   static const header1 = {
@@ -277,7 +277,7 @@ class SoccerApi {
 
   Future<List<LiveScore>> getLiveFixture() async {
     Response res = await get(apiUrl2, headers: headers);
-
+    print("Button pressed");
     if (res.statusCode == 200) {
       // this means that we are connected to the database
       var body = jsonDecode(res.body);

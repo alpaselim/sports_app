@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sports_app/Data/app_constant.dart';
 import 'package:sports_app/Data/app_constant_env.dart';
+import 'package:sports_app/Pages/my_eleven_page.dart';
+import 'package:sports_app/Pages/populer_leagues_page.dart';
 import 'package:sports_app/Screens/HomeScreen/home_screen.dart';
 import 'package:sports_app/Screens/LoginScreen/login_screen.dart';
 import 'package:sports_app/Screens/SignUpScreen/sign_up_screen.dart';
@@ -46,5 +48,13 @@ List<GetPage<dynamic>>? getPages = [
   GetPage(
     name: homeScreenPath,
     page: () => const HomeScreen(),
+  ),
+  GetPage(
+    name: populerLeaguePath,
+    page: () => const PopularLeagueList(),
+  ),
+  GetPage(
+    name: myElevenPath,
+    page: () => const myEleven(),
   ),
 ];

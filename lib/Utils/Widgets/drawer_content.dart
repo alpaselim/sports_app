@@ -120,9 +120,10 @@ class CustomDrawer extends StatelessWidget {
                     title: "Canlı Sonuçlar"),
                 _drawerItem(
                     onTap: () {
-                      /* 
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => LeagueList())); */
+                      Navigator.pushNamed(
+                        context,
+                        populerLeaguePath,
+                      );
                     },
                     iconData: Icons.format_list_bulleted,
                     title: "Puan Durumu"),
@@ -134,8 +135,10 @@ class CustomDrawer extends StatelessWidget {
                     onTap: () {}, iconData: Icons.cast, title: "TV Rehberi"),
                 _drawerItem(
                     onTap: () {
-                      /*   Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => myEleven())); */
+                      Navigator.pushNamed(
+                        context,
+                        myElevenPath,
+                      );
                     },
                     iconData: Icons.eleven_mp,
                     title: "Benim 11'im"),
@@ -163,7 +166,7 @@ class CustomDrawer extends StatelessWidget {
                   title: "TV Rehberi",
                 ),
                 const Divider(
-                  color: Colors.black,
+                  color: kBlackColor,
                   endIndent: 20,
                   indent: 20,
                 ),
@@ -212,14 +215,14 @@ class CustomDrawer extends StatelessWidget {
       margin: const EdgeInsets.symmetric(
         horizontal: 7,
       ),
-      color: const Color.fromARGB(255, 65, 65, 65),
+      color: kLabelColor,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(7, 3, 7, 3),
         child: Row(
           children: [
             Icon(
               iconData,
-              color: Colors.white,
+              color: kWhiteColor,
               size: 22,
             ),
             const SizedBox(
@@ -227,7 +230,7 @@ class CustomDrawer extends StatelessWidget {
             ),
             Text(
               title,
-              style: const TextStyle(color: Colors.white, fontSize: 15.0),
+              style: const TextStyle(color: kWhiteColor, fontSize: 15.0),
             )
           ],
         ),
@@ -244,12 +247,12 @@ class CustomDrawer extends StatelessWidget {
         onTap: onTap,
         leading: Icon(
           iconData,
-          color: Colors.black,
+          color: kBlackColor,
         ),
         title: Text(
           title,
           style: const TextStyle(
-            color: Colors.black,
+            color: kBlackColor,
           ),
         ),
         trailing: trailing,
