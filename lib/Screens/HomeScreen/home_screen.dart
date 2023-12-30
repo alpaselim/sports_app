@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sports_app/Data/app_constant.dart';
+import 'package:sports_app/Pages/live_fixture_page.dart';
 import 'package:sports_app/Services/auth_service.dart';
 import 'package:sports_app/Utils/Widgets/drawer_content.dart';
 
@@ -39,6 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       drawer: const CustomDrawer(),
+      body: const LiveFixture(),
+      //body: FixtureInfoPage(1, 1, 1),
     );
   }
 }

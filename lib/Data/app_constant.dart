@@ -17,8 +17,15 @@ const kButtonGreyColor = Color(0xFF5B5B5E);
 const kIconColor = Color(0xFFD0D2D1);
 const kLightGreyColor = Color.fromARGB(135, 253, 254, 255);
 const kDarkGreenColor = Color.fromARGB(255, 79, 119, 145);
-
 const kDarkblueColor = Color.fromARGB(255, 70, 98, 159);
+const kLabelColor = Color.fromARGB(255, 65, 65, 65);
+const kEventIconColor = Color.fromARGB(255, 118, 146, 151);
+const kLineupBlue = Color.fromARGB(255, 1, 85, 185);
+const kLineupGrey = Color.fromARGB(255, 66, 66, 66);
+const kWhiteStickColor = Color.fromARGB(255, 218, 218, 218);
+const kRedStickColor = Color.fromARGB(255, 212, 58, 58);
+const kcustomWhiteColor = Color.fromARGB(255, 233, 232, 229);
+const kcustomBlueColor = Color.fromARGB(255, 47, 130, 255);
 
 ThemeData appTheme = ThemeData(
   scaffoldBackgroundColor: kWhiteColor,
