@@ -113,8 +113,10 @@ class CustomDrawer extends StatelessWidget {
                 sportsLabel(iconData: Icons.sports_soccer, title: "FUTBOL"),
                 _drawerItem(
                     onTap: () {
-                      /* Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => HomeView())); */
+                      Navigator.pushNamed(
+                        context,
+                        homeScreenPath,
+                      );
                     },
                     iconData: CupertinoIcons.clock,
                     title: "Canlı Sonuçlar"),

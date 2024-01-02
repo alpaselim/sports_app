@@ -22,7 +22,7 @@ class SoccerApi {
 
   static const headers = {
     'x-rapidapi-host': "v3.football.api-sports.io",
-    'x-rapidapi-key': "c886db8dc289d7973187aef5780213c6"
+    //'x-rapidapi-key': "c886db8dc289d7973187aef5780213c6"
   };
 
   static const header1 = {

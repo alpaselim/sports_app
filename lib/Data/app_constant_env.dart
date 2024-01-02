@@ -7,3 +7,4 @@ const String signUpScreenPath = "/signUpScreen";
 const String homeScreenPath = "/homeScreen";
 const String populerLeaguePath = "/popularLeagueScreen";
 const String myElevenPath = "/myEleven";
+const String liveFixturePath = "/liveFixture";
