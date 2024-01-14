@@ -79,7 +79,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
             passwordTextField(),
             const SizedBox(height: 20),
             signUpButton(),
-            loginButton(),
+            const SizedBox(height: 15),
+            signInButton(),
           ],
         ),
       ),
@@ -218,47 +219,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   // Kullanıcı eğer hesaba sahipse login ekranına yönlendiren TextButton alanını oluşturur.
-  Center loginButton() {
-    return Center(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            "Already have an account?",
-            style: TextStyle(
-              color: kButtonGreyColor,
-              fontSize: 14,
-              shadows: [
-                Shadow(
-                  color: kShadowColor,
-                  offset: Offset(0, 4),
-                  blurRadius: 8,
-                ),
-              ],
-            ),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pushNamedAndRemoveUntil(
-              context,
-              loginScreenPath,
-              (route) => false,
-            ),
-            child: const Text(
-              "Login",
+
+  InkWell signInButton() {
+    return InkWell(
+      onTap: () => Navigator.pushNamedAndRemoveUntil(
+        context,
+        loginScreenPath,
+        (route) => false,
+      ),
+      child: Container(
+        height: 45,
+        width: 500,
+        decoration: const BoxDecoration(
+          //borderRadius: BorderRadius.circular(28.5),
+          color: kGreyColor,
+        ),
+        child: const Center(
+          child: Text("Giriş Yap",
               style: TextStyle(
-                color: kSplashBackgroundColor,
-                fontSize: 14,
-                shadows: [
-                  Shadow(
-                    color: kShadowColor,
-                    offset: Offset(0, 4),
-                    blurRadius: 8,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
+                  fontSize: 16,
+                  color: kWhiteColor,
+                  fontWeight: FontWeight.bold)),
+        ),
       ),
     );
   }

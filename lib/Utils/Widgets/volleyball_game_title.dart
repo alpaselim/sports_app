@@ -28,7 +28,7 @@ Widget volleyballGameTitle(VolleyballGamesModel match) {
   } else if (match.status.short == "PST") {
     status = "ERT";
   } else {
-    status = "${match.status.short} ${match.status.short}'";
+    status = match.status.short;
     statusColor = kRedColor;
   }
 
@@ -42,6 +42,15 @@ Widget volleyballGameTitle(VolleyballGamesModel match) {
             Image.network(
               match.league.logo,
               width: 20,
+              errorBuilder:
+                  (BuildContext context, Object error, StackTrace? stackTrace) {
+                // Hata durumunda gösterilecek default resmi belirtin.
+                return Image.network(
+                  'https://media.api-sports.io/volley/teams/1043.png',
+                  width: 24,
+                  height: 24,
+                );
+              },
             ),
             const SizedBox(
               width: 15,

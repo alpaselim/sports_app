@@ -46,6 +46,15 @@ Widget gameTitle(BasketballGamesModel match) {
             Image.network(
               match.league.logo,
               width: 20,
+              errorBuilder:
+                  (BuildContext context, Object error, StackTrace? stackTrace) {
+                // Hata durumunda gösterilecek default resmi belirtin.
+                return Image.network(
+                  'https://media.api-sports.io/volley/teams/1043.png',
+                  width: 24,
+                  height: 24,
+                );
+              },
             ),
             const SizedBox(
               width: 15,
@@ -67,7 +76,10 @@ Widget gameTitle(BasketballGamesModel match) {
             const SizedBox(
               width: 5,
             ),
-            statuCheck(status, statusColor),
+            SizedBox(
+              width: 40,
+              child: statuCheck(status, statusColor),
+            ),
             Expanded(
               child: Text(
                 match.home.name,
@@ -96,7 +108,7 @@ Widget gameTitle(BasketballGamesModel match) {
             ),
             const SizedBox(width: 2),
             scorBoard(homeScore, awayScore, match),
-            const SizedBox(width: 3.5),
+            const SizedBox(width: 2),
             Image.network(
               match.away.logoUrl,
               width: 24,
@@ -144,7 +156,7 @@ Text statuCheck(String status, Color statusColor) {
 Widget scorBoard(int? homeScore, int? awayScore, BasketballGamesModel match) {
   if (match.status.short == "NS") {
     return const Text(
-      " v ",
+      "v   ",
       textAlign: TextAlign.center,
       style: TextStyle(
         color: kBlackColor,

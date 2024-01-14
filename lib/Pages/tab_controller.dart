@@ -16,6 +16,7 @@ class MyTabBarWithButtons extends StatefulWidget {
       required this.leagueLogo,
       required this.leagueName});
   @override
+  // ignore: library_private_types_in_public_api
   _MyTabBarWithButtonsState createState() => _MyTabBarWithButtonsState();
 }
 

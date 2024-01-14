@@ -50,6 +50,15 @@ Widget selectedMatchTitle(LiveScore match) {
         Image.network(
           match.home.logoUrl,
           width: 40,
+          errorBuilder:
+              (BuildContext context, Object error, StackTrace? stackTrace) {
+            // Hata durumunda gösterilecek default resmi belirtin.
+            return Image.network(
+              'https://media.api-sports.io/volley/teams/1043.png',
+              width: 24,
+              height: 24,
+            );
+          },
         ),
 
         Expanded(
@@ -115,6 +124,15 @@ Widget selectedMatchTitle(LiveScore match) {
         Image.network(
           match.away.logoUrl,
           width: 40,
+          errorBuilder:
+              (BuildContext context, Object error, StackTrace? stackTrace) {
+            // Hata durumunda gösterilecek default resmi belirtin.
+            return Image.network(
+              'https://media.api-sports.io/volley/teams/1043.png',
+              width: 24,
+              height: 24,
+            );
+          },
         ),
         const SizedBox(
           width: 2,

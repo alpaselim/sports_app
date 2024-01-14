@@ -8,14 +8,15 @@ import 'package:sports_app/Pages/live_fixture_page.dart';
 import 'package:sports_app/Services/api_service.dart';
 
 class FixtureInfoPage extends StatefulWidget {
-  int? selectedMatch;
-  int homeTeamId;
-  int awayTeamId;
+  final int? selectedMatch;
+  final int homeTeamId;
+  final int awayTeamId;
 
-  FixtureInfoPage(this.selectedMatch, this.homeTeamId, this.awayTeamId,
+  const FixtureInfoPage(this.selectedMatch, this.homeTeamId, this.awayTeamId,
       {super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _FixtureInfoPageState createState() => _FixtureInfoPageState();
 }
 
