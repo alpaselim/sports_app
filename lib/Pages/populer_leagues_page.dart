@@ -6,6 +6,7 @@ class PopularLeagueList extends StatefulWidget {
   const PopularLeagueList({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _PopularLeagueListState createState() => _PopularLeagueListState();
 }
 

@@ -4,10 +4,10 @@ import 'package:sports_app/Data/app_constant.dart';
 import 'package:sports_app/Services/api_service.dart';
 
 class FormPage extends StatefulWidget {
-  String? selectedSeason;
-  int? leagueID;
+  final String? selectedSeason;
+  final int? leagueID;
 
-  FormPage(this.selectedSeason, this.leagueID, {super.key});
+  const FormPage(this.selectedSeason, this.leagueID, {super.key});
 
   @override
   State<FormPage> createState() => _FormPageState();

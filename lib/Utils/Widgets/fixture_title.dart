@@ -65,7 +65,10 @@ Widget fixturetitle(LiveScore match) {
             const SizedBox(
               width: 5,
             ),
-            statuCheck(status, statusColor),
+            SizedBox(
+              width: 40,
+              child: statuCheck(status, statusColor),
+            ),
             Expanded(
               child: Text(
                 match.home.name,
@@ -94,7 +97,7 @@ Widget fixturetitle(LiveScore match) {
             ),
             const SizedBox(width: 2),
             scorBoard(homeGoal, awayGoal),
-            const SizedBox(width: 3.5),
+            const SizedBox(width: 2),
             Image.network(
               match.away.logoUrl,
               width: 24,
@@ -142,7 +145,7 @@ Text statuCheck(var status, Color statusColor) {
 Widget scorBoard(int? homeGoal, int? awayGoal) {
   if (homeGoal == null && awayGoal == null) {
     return const Text(
-      " v ",
+      "v   ",
       textAlign: TextAlign.center,
       style: TextStyle(
         color: kBlackColor,

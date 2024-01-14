@@ -13,6 +13,7 @@ class FixtureScreen extends StatefulWidget {
 
   FixtureScreen(this.selectedSeason, this.leagueID, {super.key});
   @override
+  // ignore: library_private_types_in_public_api
   _FixtureScreenState createState() => _FixtureScreenState();
 }
 
@@ -21,7 +22,7 @@ class _FixtureScreenState extends State<FixtureScreen> {
     'x-rapidapi-host': "v3.football.api-sports.io",
     'x-rapidapi-key': "c886db8dc289d7973187aef5780213c6",
   };
-  int currentWeek = 14;
+  int currentWeek = 20;
   List<LiveScore> fixtures = [];
 
   Future<void> fetchFixtures(

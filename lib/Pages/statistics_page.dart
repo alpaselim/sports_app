@@ -5,10 +5,10 @@ import 'package:sports_app/Data/models/player_statistics_model.dart';
 import 'package:sports_app/Services/api_service.dart';
 
 class StaticticPage extends StatefulWidget {
-  String? selectedSeason;
-  int? leagueID;
+  final String? selectedSeason;
+  final int? leagueID;
 
-  StaticticPage(this.selectedSeason, this.leagueID, {super.key});
+  const StaticticPage(this.selectedSeason, this.leagueID, {super.key});
   @override
   State<StaticticPage> createState() => _StaticticPageState();
 }

@@ -9,6 +9,7 @@ class LineUpBody extends StatefulWidget {
   const LineUpBody(this.allmatches, {super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _LineUpBodyState createState() => _LineUpBodyState();
 }
 

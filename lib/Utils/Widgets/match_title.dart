@@ -46,6 +46,15 @@ Widget matchTitle(LiveScore match) {
             Image.network(
               match.league.logoUrl,
               width: 20,
+              errorBuilder:
+                  (BuildContext context, Object error, StackTrace? stackTrace) {
+                // Hata durumunda gösterilecek default resmi belirtin.
+                return Image.network(
+                  'https://media.api-sports.io/volley/teams/1043.png',
+                  width: 24,
+                  height: 24,
+                );
+              },
             ),
             const SizedBox(
               width: 15,
@@ -67,7 +76,10 @@ Widget matchTitle(LiveScore match) {
             const SizedBox(
               width: 5,
             ),
-            statuCheck(status, statusColor),
+            SizedBox(
+              width: 40,
+              child: statuCheck(status, statusColor),
+            ),
             Expanded(
               child: Text(
                 match.home.name,
@@ -144,7 +156,7 @@ Text statuCheck(var status, Color statusColor) {
 Widget scorBoard(int? homeGoal, int? awayGoal) {
   if (homeGoal == null && awayGoal == null) {
     return const Text(
-      " v ",
+      "v   ",
       textAlign: TextAlign.center,
       style: TextStyle(
         color: kBlackColor,
