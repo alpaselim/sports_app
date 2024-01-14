@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:sports_app/Data/models/standing_model.dart';
-import 'package:sports_app/table_row.dart';
-import 'package:sports_app/top_row.dart';
+import 'package:sports_app/Utils/Widgets/table_row.dart';
+import 'package:sports_app/Utils/Widgets/top_row.dart';
 
 Widget pageBody(List<PuanTablosu> allmatches) {
   List<Widget> children = [];
