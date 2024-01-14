@@ -250,12 +250,16 @@ class _LoginScreenState extends State<LoginScreen> {
             //borderRadius: BorderRadius.circular(28.5),
             color: kDarkblueColor,
           ),
-          child: const Row(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.facebook_sharp),
-              SizedBox(width: 5),
-              Text(
+              Image.asset(
+                "assets/images/facebook.jpg",
+                width: 35,
+                height: 35,
+              ),
+              const SizedBox(width: 10),
+              const Text(
                 "Facebook ile\nbağlan",
                 style: TextStyle(color: kWhiteColor),
               )
@@ -285,12 +289,16 @@ class _LoginScreenState extends State<LoginScreen> {
             //borderRadius: BorderRadius.circular(28.5),
             color: kBlueColor,
           ),
-          child: const Row(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.facebook_outlined),
-              SizedBox(width: 5),
-              Text(
+              Image.asset(
+                "assets/images/google.jpg",
+                width: 35,
+                height: 35,
+              ),
+              const SizedBox(width: 10),
+              const Text(
                 "Google ile\nbağlan",
                 style: TextStyle(color: kWhiteColor),
               )

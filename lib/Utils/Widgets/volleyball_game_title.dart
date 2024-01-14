@@ -1,38 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sports_app/Data/app_constant.dart';
-import 'package:sports_app/Data/models/live_score_model.dart';
+import 'package:sports_app/Data/models/volleyball_game_model.dart';
 
-Widget matchTitle(LiveScore match) {
-  var homeGoal = match.goal.home;
-  var awayGoal = match.goal.away;
-  var winnerHomeTeam = match.home.winner;
-  winnerHomeTeam ??= false;
-  var winnerAwayTeam = match.away.winner;
-  winnerAwayTeam ??= false;
+Widget volleyballGameTitle(VolleyballGamesModel match) {
+  var homeScore = match.scores.home;
+  var awayScore = match.scores.away;
 
   String status;
   Color statusColor = kBlackColor;
 
-  String dateStr = match.fixture.date;
+  String dateStr = match.date;
   DateTime dateTime = DateTime.parse(dateStr).add(const Duration(hours: 3));
 
   String startTime = DateFormat('HH:mm').format(dateTime);
 
-  if (match.fixture.status.short == "FT") {
+  if (match.status.short == "FT") {
     status = "MS";
-  } else if (match.fixture.status.short == "NS") {
+  } else if (match.status.short == "NS") {
     status = startTime;
-  } else if (match.fixture.status.short == "HT") {
+  } else if (match.status.short == "HT") {
     status = "DA";
-  } else if (match.fixture.status.short == "PEN") {
+  } else if (match.status.short == "PEN") {
     status = "PEN";
-  } else if (match.fixture.status.short == "TBD") {
-    status = "TBD";
-  } else if (match.fixture.status.short == "PST") {
+  } else if (match.status.short == "AOT") {
+    status = "UZ";
+  } else if (match.status.short == "PST") {
     status = "ERT";
   } else {
-    status = "${match.fixture.status.elapsedTime}'";
+    status = "${match.status.short} ${match.status.short}'";
     statusColor = kRedColor;
   }
 
@@ -44,14 +40,14 @@ Widget matchTitle(LiveScore match) {
         child: Row(
           children: [
             Image.network(
-              match.league.logoUrl,
+              match.league.logo,
               width: 20,
             ),
             const SizedBox(
               width: 15,
             ),
             Text(
-              "${match.league.country} - ${match.league.name} ",
+              "${match.country.name} - ${match.league.name} ",
               style: const TextStyle(color: kWhiteColor),
             ),
           ],
@@ -70,18 +66,16 @@ Widget matchTitle(LiveScore match) {
             statuCheck(status, statusColor),
             Expanded(
               child: Text(
-                match.home.name,
+                match.teams.home.name,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   color: kBlackColor,
                   fontSize: 13.0,
-                  fontWeight:
-                      winnerHomeTeam ? FontWeight.bold : FontWeight.normal,
                 ),
               ),
             ),
             Image.network(
-              match.home.logoUrl,
+              match.teams.home.logo,
               width: 24,
               height: 24,
               errorBuilder:
@@ -95,10 +89,10 @@ Widget matchTitle(LiveScore match) {
               },
             ),
             const SizedBox(width: 2),
-            scorBoard(homeGoal, awayGoal),
+            scorBoard(homeScore, awayScore, match),
             const SizedBox(width: 3.5),
             Image.network(
-              match.away.logoUrl,
+              match.teams.away.logo,
               width: 24,
               height: 24,
               errorBuilder:
@@ -113,13 +107,11 @@ Widget matchTitle(LiveScore match) {
             ),
             Expanded(
               child: Text(
-                match.away.name,
+                match.teams.away.name,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   color: kBlackColor,
                   fontSize: 13.0,
-                  fontWeight:
-                      winnerAwayTeam ? FontWeight.bold : FontWeight.normal,
                 ),
               ),
             ),
@@ -141,8 +133,8 @@ Text statuCheck(var status, Color statusColor) {
   );
 }
 
-Widget scorBoard(int? homeGoal, int? awayGoal) {
-  if (homeGoal == null && awayGoal == null) {
+Widget scorBoard(int? homeScore, int? awayScore, VolleyballGamesModel match) {
+  if (match.status.short == "NS") {
     return const Text(
       " v ",
       textAlign: TextAlign.center,
@@ -154,7 +146,7 @@ Widget scorBoard(int? homeGoal, int? awayGoal) {
     );
   } else {
     return Text(
-      "$homeGoal - $awayGoal",
+      "$homeScore - $awayScore",
       textAlign: TextAlign.center,
       style: const TextStyle(
         color: kBlackColor,

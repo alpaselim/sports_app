@@ -23,16 +23,16 @@ Widget fixturetitle(LiveScore match) {
 
   if (match.fixture.status.short == "FT") {
     status = "MS";
-    statusColor = kBlackColor;
   } else if (match.fixture.status.short == "NS") {
     status = startTime;
-    statusColor = kBlackColor;
   } else if (match.fixture.status.short == "HT") {
     status = "DA";
-    statusColor = kBlackColor;
   } else if (match.fixture.status.short == "PEN") {
     status = "PEN";
-    statusColor = kBlackColor;
+  } else if (match.fixture.status.short == "TBD") {
+    status = "TBD";
+  } else if (match.fixture.status.short == "PST") {
+    status = "ERT";
   } else {
     status = "${match.fixture.status.elapsedTime}'";
     statusColor = kRedColor;
@@ -47,10 +47,12 @@ Widget fixturetitle(LiveScore match) {
         width: double.infinity,
         child: Padding(
           padding: const EdgeInsets.only(left: 10),
-          child: Text(datePart,
-              style: const TextStyle(
-                color: kWhiteColor,
-              )),
+          child: Text(
+            datePart,
+            style: const TextStyle(
+              color: kWhiteColor,
+            ),
+          ),
         ),
       ),
       Container(
@@ -79,6 +81,16 @@ Widget fixturetitle(LiveScore match) {
             Image.network(
               match.home.logoUrl,
               width: 24,
+              height: 24,
+              errorBuilder:
+                  (BuildContext context, Object error, StackTrace? stackTrace) {
+                // Hata durumunda gösterilecek default resmi belirtin.
+                return Image.network(
+                  'https://media.api-sports.io/volley/teams/1043.png',
+                  width: 24,
+                  height: 24,
+                );
+              },
             ),
             const SizedBox(width: 2),
             scorBoard(homeGoal, awayGoal),
@@ -86,6 +98,16 @@ Widget fixturetitle(LiveScore match) {
             Image.network(
               match.away.logoUrl,
               width: 24,
+              height: 24,
+              errorBuilder:
+                  (BuildContext context, Object error, StackTrace? stackTrace) {
+                // Hata durumunda gösterilecek default resmi belirtin.
+                return Image.network(
+                  'https://media.api-sports.io/volley/teams/1043.png',
+                  width: 24,
+                  height: 24,
+                );
+              },
             ),
             Expanded(
               child: Text(

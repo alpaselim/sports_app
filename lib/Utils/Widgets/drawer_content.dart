@@ -121,12 +121,6 @@ class CustomDrawer extends StatelessWidget {
                     iconData: CupertinoIcons.clock,
                     title: "Canlı Sonuçlar"),
 
-                const Divider(
-                  color: Colors.grey, // Çizgi rengini ayarlayabilirsiniz
-                  thickness: 1, // Çizgi kalınlığını ayarlayabilirsiniz
-                  indent: 16, // Çizginin sol tarafındaki boşluk
-                  endIndent: 16, // Çizginin sağ tarafındaki boşluk
-                ),
                 _drawerItem(
                     onTap: () {
                       Navigator.pushNamed(
