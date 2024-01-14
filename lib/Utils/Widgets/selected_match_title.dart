@@ -31,6 +31,8 @@ Widget selectedMatchTitle(LiveScore match) {
     status = "DA";
   } else if (match.fixture.status.short == "PEN") {
     status = "PEN";
+  } else if (match.fixture.status.short == "PST") {
+    status = "ERT";
   } else {
     status = "${match.fixture.status.elapsedTime}'";
   }

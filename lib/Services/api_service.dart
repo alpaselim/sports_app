@@ -1,8 +1,8 @@
 // ignore_for_file: avoid_print
-
 import 'dart:convert';
-
 import 'package:http/http.dart';
+import 'package:intl/intl.dart';
+import 'package:sports_app/Data/models/basketball_game_model.dart';
 import 'package:sports_app/Data/models/basketball_model.dart';
 import 'package:sports_app/Data/models/coach_model.dart';
 import 'package:sports_app/Data/models/event_model.dart';
@@ -12,6 +12,7 @@ import 'package:sports_app/Data/models/live_score_model.dart';
 import 'package:sports_app/Data/models/player_statistics_model.dart';
 import 'package:sports_app/Data/models/search_team_model.dart';
 import 'package:sports_app/Data/models/standing_model.dart';
+import 'package:sports_app/Data/models/volleyball_game_model.dart';
 
 class SoccerApi {
   final Uri apiUrl = Uri.parse(
@@ -22,7 +23,7 @@ class SoccerApi {
 
   static const headers = {
     'x-rapidapi-host': "v3.football.api-sports.io",
-    //'x-rapidapi-key': "c886db8dc289d7973187aef5780213c6"
+    'x-rapidapi-key': "c886db8dc289d7973187aef5780213c6"
   };
 
   static const header1 = {
@@ -314,6 +315,72 @@ class SoccerApi {
       return matches;
     } else {
       throw Exception('Failed to load standing');
+    }
+  }
+
+  Future<List<BasketballGamesModel>> getBasketballGames() async {
+    DateTime today = DateTime.now();
+    String formattedDate = DateFormat('yyyy-MM-dd').format(today);
+
+    final Uri apiUrl = Uri.parse(
+        "https://v1.basketball.api-sports.io/games?date=$formattedDate");
+    Response res = await get(apiUrl, headers: header1);
+
+    if (res.statusCode == 200) {
+      var body = jsonDecode(res.body);
+      print("Api service: $body");
+      List<dynamic> matchesList = body['response'];
+      List<BasketballGamesModel> matches = matchesList
+          .map((dynamic item) => BasketballGamesModel.fromJson(item))
+          .toList();
+      return matches;
+    } else {
+      throw Exception('Failed to load fixture');
+    }
+  }
+
+  Future<List<VolleyballGamesModel>> getVolleyballGames() async {
+    DateTime today = DateTime.now();
+    String formattedDate = DateFormat('yyyy-MM-dd').format(today);
+
+    final Uri apiUrl = Uri.parse(
+        "https://v1.volleyball.api-sports.io/games?date=$formattedDate");
+    Response res = await get(apiUrl, headers: header3);
+
+    if (res.statusCode == 200) {
+      var body = jsonDecode(res.body);
+      print("Api service: $body");
+      List<dynamic> matchesList = body['response'];
+      List<VolleyballGamesModel> matches = matchesList
+          .map((dynamic item) => VolleyballGamesModel.fromJson(item))
+          .toList();
+      return matches;
+    } else {
+      throw Exception('Failed to load fixture');
+    }
+  }
+
+  Future<List<LiveScore>> getAllFixture() async {
+    DateTime today = DateTime.now();
+    String formattedDate = DateFormat('yyyy-MM-dd').format(today);
+
+    final Uri apiUrl = Uri.parse(
+        "https://v3.football.api-sports.io/fixtures?date=$formattedDate");
+    Response res = await get(apiUrl, headers: headers);
+    print("Button pressed");
+    if (res.statusCode == 200) {
+      // this means that we are connected to the database
+      var body = jsonDecode(res.body);
+      print("Api service: $body");
+      List<dynamic> matchesList = body['response'];
+      // for debugging
+
+      List<LiveScore> matches =
+          matchesList.map((dynamic item) => LiveScore.fromJson(item)).toList();
+
+      return matches;
+    } else {
+      throw Exception('Failed to load fixture');
     }
   }
 }

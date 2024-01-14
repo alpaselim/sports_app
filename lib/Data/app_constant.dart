@@ -26,6 +26,7 @@ const kWhiteStickColor = Color.fromARGB(255, 218, 218, 218);
 const kRedStickColor = Color.fromARGB(255, 212, 58, 58);
 const kcustomWhiteColor = Color.fromARGB(255, 233, 232, 229);
 const kcustomBlueColor = Color.fromARGB(255, 47, 130, 255);
+const kTransparentColor = Colors.transparent;
 
 ThemeData appTheme = ThemeData(
   scaffoldBackgroundColor: kWhiteColor,
