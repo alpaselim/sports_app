@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sports_app/Data/models/standing_model.dart';
-import 'package:sports_app/form_table_row.dart';
-import 'package:sports_app/form_top_row.dart';
+import 'package:sports_app/Utils/Widgets/form_table_row.dart';
+import 'package:sports_app/Utils/Widgets/form_top_row.dart';
 
 Widget formBody(List<PuanTablosu> allmatches) {
   List<Widget> children = [];
