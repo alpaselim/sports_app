@@ -30,7 +30,7 @@ const kTransparentColor = Colors.transparent;
 
 ThemeData appTheme = ThemeData(
   scaffoldBackgroundColor: kWhiteColor,
-  colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+  useMaterial3: true,
   appBarTheme: const AppBarTheme(
     iconTheme: IconThemeData(
       color: kWhiteColor, size: 30, // Geri buton rengi
@@ -40,37 +40,4 @@ ThemeData appTheme = ThemeData(
       fontSize: 18, // Başlık font büyüklüğü
     ),
   ),
-  useMaterial3: true,
-  inputDecorationTheme: InputDecorationTheme(
-    hintStyle: const TextStyle(color: kGreyColor),
-    contentPadding: const EdgeInsets.all(12.0),
-    border: customOutlineInputBorder(),
-    enabledBorder: customOutlineInputBorder(),
-    focusedBorder: customOutlineInputBorder(),
-    disabledBorder: customOutlineInputBorder(),
-    errorBorder: customErrorOutlineInputBorder(),
-    focusedErrorBorder: customErrorOutlineInputBorder(),
-    //https://github.com/flutter/flutter/issues/99063
-    errorStyle: const TextStyle(height: 0),
-  ),
 );
-
-OutlineInputBorder customOutlineInputBorder() {
-  return const OutlineInputBorder(
-    //borderRadius: BorderRadius.circular(10.0),
-    borderSide: BorderSide(
-      color: kBlackColor,
-      //width: 1.0,
-    ),
-  );
-}
-
-OutlineInputBorder customErrorOutlineInputBorder() {
-  return const OutlineInputBorder(
-    //borderRadius: BorderRadius.circular(10.0),
-    borderSide: BorderSide(
-      color: kBlackColor,
-      //width: 1.0,
-    ),
-  );
-}

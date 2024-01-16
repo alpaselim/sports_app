@@ -70,6 +70,12 @@ class _MyTabBarWithButtonsState extends State<MyTabBarWithButtons>
             ),
           ],
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search, color: kBlueColor),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -195,7 +201,7 @@ class _MyTabBarWithButtonsState extends State<MyTabBarWithButtons>
             ),
           ),
           Container(
-            height: 50,
+            height: 40,
             decoration: const BoxDecoration(
               color: kBlueColor,
             ),

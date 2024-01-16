@@ -4,7 +4,7 @@ import 'package:sports_app/Data/app_constant.dart';
 import 'package:sports_app/Pages/fixture_event_page.dart';
 import 'package:sports_app/Pages/fixture_statistic_page.dart';
 import 'package:sports_app/Pages/lineup_page.dart';
-import 'package:sports_app/Pages/live_fixture_page.dart';
+import 'package:sports_app/Screens/Forum/forum_page.dart';
 import 'package:sports_app/Services/api_service.dart';
 
 class FixtureInfoPage extends StatefulWidget {
@@ -59,7 +59,7 @@ class _FixtureInfoPageState extends State<FixtureInfoPage>
         children: [
           Container(
             width: screenWidth,
-            height: 65,
+            height: 60,
             decoration: const BoxDecoration(color: kWhiteColor),
             child: FutureBuilder(
               future: SoccerApi().getSelectedFixture(widget.selectedMatch),
@@ -79,7 +79,7 @@ class _FixtureInfoPageState extends State<FixtureInfoPage>
             ),
           ),
           Container(
-            height: 50,
+            height: 40,
             decoration: const BoxDecoration(
               color: kBlueColor,
             ),
@@ -102,7 +102,7 @@ class _FixtureInfoPageState extends State<FixtureInfoPage>
             widget.selectedMatch, widget.homeTeamId, widget.awayTeamId),
         LineUpPage(widget.selectedMatch),
         FixtureStatisticPage(widget.selectedMatch),
-        const LiveFixture(), //ForumPage(matchId: widget.selectedMatch),
+        ForumPage(matchId: widget.selectedMatch),
       ],
     );
   }

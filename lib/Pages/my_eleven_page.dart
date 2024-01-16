@@ -63,6 +63,12 @@ class _myElevenState extends State<myEleven>
             ),
           ],
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search, color: kBlueColor),
+            onPressed: () {},
+          ),
+        ],
       ),
       resizeToAvoidBottomInset: false,
       body: GestureDetector(

@@ -4,7 +4,6 @@ import 'package:sports_app/Pages/all_fixture_page.dart';
 import 'package:sports_app/Pages/basketball_games_page.dart';
 import 'package:sports_app/Pages/live_fixture_page.dart';
 import 'package:sports_app/Pages/volleyball_game_page.dart';
-import 'package:sports_app/Services/auth_service.dart';
 import 'package:sports_app/Utils/Widgets/drawer_content.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -49,11 +48,8 @@ class _HomeScreenState extends State<HomeScreen>
         //flexibleSpace: myBody(),
         actions: [
           IconButton(
-            icon: const Icon(Icons.exit_to_app, color: kWhiteColor),
-            onPressed: () async {
-              await authService.signOut(context);
-              // ignore: use_build_context_synchronously
-            },
+            icon: const Icon(Icons.search, color: kWhiteColor),
+            onPressed: () {},
           ),
         ],
       ),

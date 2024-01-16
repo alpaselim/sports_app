@@ -10,7 +10,7 @@ Widget lineUpTitle(LineupData match) {
     children: [
       SingleChildScrollView(
         child: Container(
-          color: const Color.fromARGB(255, 65, 65, 65),
+          color: kLabelColor,
           height: 25,
           width: double.infinity,
           alignment: Alignment.centerLeft,
@@ -69,10 +69,10 @@ Widget lineUpTitle(LineupData match) {
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       const Divider(
-        color: kGreyColor, // Çizgi rengini ayarlayabilirsiniz
-        thickness: 1, // Çizgi kalınlığını ayarlayabilirsiniz
-        indent: 5, // Çizginin sol tarafındaki boşluk
-        endIndent: 280, // Çizginin sağ tarafındaki boşluk
+        color: kGreyColor,
+        thickness: 1,
+        indent: 5,
+        endIndent: 280,
       ),
       Expanded(
         child: ListView.builder(
@@ -85,23 +85,25 @@ Widget lineUpTitle(LineupData match) {
                   child: Row(
                     children: [
                       SizedBox(
-                          width: 20,
-                          child: Text(
-                              match.startXI[index].player.number.toString())),
+                        width: 20,
+                        child: Text(
+                            match.substitutes[index].player.number.toString()),
+                      ),
                       const SizedBox(
                         width: 10,
                       ),
                       SizedBox(
-                          width: 200,
-                          child: Text(match.startXI[index].player.name)),
+                        width: 200,
+                        child: Text(match.substitutes[index].player.name),
+                      ),
                     ],
                   ),
                 ),
                 const Divider(
-                  color: kGreyColor, // Çizgi rengini ayarlayabilirsiniz
-                  thickness: 1, // Çizgi kalınlığını ayarlayabilirsiniz
-                  indent: 5, // Çizginin sol tarafındaki boşluk
-                  endIndent: 5, // Çizginin sağ tarafındaki boşluk
+                  color: kGreyColor,
+                  thickness: 1,
+                  indent: 5,
+                  endIndent: 5,
                 ),
               ],
             );

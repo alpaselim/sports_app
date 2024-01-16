@@ -69,12 +69,8 @@ class _LineUpBodyState extends State<LineUpBody> {
             ),
           ],
         ),
-        Expanded(child: lineUp(index)),
+        Expanded(child: lineUpTitle(widget.allmatches[index])),
       ],
     );
-  }
-
-  Widget lineUp(int index) {
-    return lineUpTitle(widget.allmatches[index]);
   }
 }

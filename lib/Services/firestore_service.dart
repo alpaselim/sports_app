@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sports_app/Data/models/comment_model.dart';
 import 'package:sports_app/Data/models/user_model.dart';
 import 'package:sports_app/Services/snackbar_service.dart';
 
@@ -12,11 +13,30 @@ class FireStoreService {
   FireStoreService._internal() {
     // initialization logic
   }
-
-  CollectionReference users = FirebaseFirestore.instance.collection('users');
-
   CollectionReference farmers =
       FirebaseFirestore.instance.collection('farmers');
+  final CollectionReference users =
+      FirebaseFirestore.instance.collection('users');
+  final CollectionReference matchesCollection =
+      FirebaseFirestore.instance.collection('matches');
+  final CollectionReference commentsCollection =
+      FirebaseFirestore.instance.collection('comments');
+
+  Future<Matchh> getMatchById(String matchId) async {
+    DocumentSnapshot matchDoc = await matchesCollection.doc(matchId).get();
+    return Matchh.fromMap(
+        matchDoc.data() as Map<String, dynamic>, commentsCollection);
+  }
+
+  Future<Comment> getCommentById(String commentId) async {
+    DocumentSnapshot commentDoc = await commentsCollection.doc(commentId).get();
+    return Comment.fromMap(commentDoc.data() as Map<String, dynamic>);
+  }
+
+  Future<Userr> getUserWithId(String userId) async {
+    DocumentSnapshot userDoc = await users.doc(userId).get();
+    return Userr.fromMap(userDoc.data() as Map<String, dynamic>);
+  }
 
   Future<void> addNewUser(UserModel userModel) async {
     await users.doc(userModel.uid).set({

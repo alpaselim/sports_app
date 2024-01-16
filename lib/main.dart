@@ -27,6 +27,20 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Sports App',
       theme: appTheme,
+
+      // theme: ThemeData(
+      //   scaffoldBackgroundColor: kWhiteColor,
+      //   useMaterial3: true,
+      //   appBarTheme: const AppBarTheme(
+      //     iconTheme: IconThemeData(
+      //       color: kWhiteColor, size: 30, // Geri buton rengi
+      //     ),
+      //     titleTextStyle: TextStyle(
+      //       color: kWhiteColor, // Başlık rengi
+      //       fontSize: 18, // Başlık font büyüklüğü
+      //     ),
+      //   ),
+      // ),
       getPages: getPages,
       initialRoute: splashScreenPath,
     );
@@ -58,7 +72,7 @@ List<GetPage<dynamic>>? getPages = [
     name: myElevenPath,
     page: () => const myEleven(),
   ),
-   GetPage(
+  GetPage(
     name: liveFixturePath,
     page: () => const LiveFixture(),
   ),

@@ -57,7 +57,6 @@ class CustomDrawer extends StatelessWidget {
                       ),
                     ],
                   ),
-                //: GetUserName(user.uid),
                 if (user != null)
                   Row(
                     children: [
@@ -68,7 +67,7 @@ class CustomDrawer extends StatelessWidget {
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
-                            return const Text("loading");
+                            return const CircularProgressIndicator();
                           } else if (snapshot.hasError) {
                             return Text("Error: ${snapshot.error}");
                           } else if (!snapshot.hasData ||
@@ -87,7 +86,6 @@ class CustomDrawer extends StatelessWidget {
                       ),
                     ],
                   ),
-
                 const SizedBox(height: 7),
                 Row(
                   children: [
@@ -120,7 +118,6 @@ class CustomDrawer extends StatelessWidget {
                     },
                     iconData: CupertinoIcons.clock,
                     title: "Canlı Sonuçlar"),
-
                 _drawerItem(
                     onTap: () {
                       Navigator.pushNamed(
@@ -164,10 +161,14 @@ class CustomDrawer extends StatelessWidget {
                     iconData: CupertinoIcons.play,
                     title: "İddaa Programı"),
                 _drawerItem(
-                  onTap: () {},
-                  iconData: Icons.cast,
-                  title: "TV Rehberi",
-                ),
+                    onTap: () {},
+                    iconData: Icons.cast,
+                    title: "TV Rehberi",
+                    trailing: const Icon(
+                      Icons.chevron_right,
+                      color: kBlackColor,
+                      size: 30,
+                    )),
                 const Divider(
                   color: kBlackColor,
                   endIndent: 20,
@@ -196,6 +197,14 @@ class CustomDrawer extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Divider divider() {
+    return const Divider(
+      color: kBlackColor,
+      endIndent: 20,
+      indent: 20,
     );
   }
 
@@ -258,6 +267,10 @@ class CustomDrawer extends StatelessWidget {
             color: kBlackColor,
           ),
         ),
-        trailing: trailing,
+        trailing: const Icon(
+          Icons.chevron_right,
+          color: kBlackColor,
+          size: 30,
+        ),
       );
 }

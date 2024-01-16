@@ -76,6 +76,15 @@ class AuthService {
       (route) => false,
     );
   }
+
+  User? getCurrentUser() {
+    return _auth.currentUser;
+  }
+
+  String? getCurrentUserDisplayName() {
+    final user = getCurrentUser();
+    return user?.displayName;
+  }
 }
 
 final AuthService authService = AuthService();

@@ -65,67 +65,82 @@ class _PopularLeagueListState extends State<PopularLeagueList> {
             ),
           ],
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search, color: kWhiteColor),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: Column(
         children: [
           const SizedBox(height: 6),
           Container(
             color: kLabelColor,
-            child: const Padding(
-              padding: EdgeInsets.fromLTRB(7, 3, 7, 3),
-              child: Row(
-                children: [
-                  Text(
+            child: const Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(7, 3, 7, 3),
+                  child: Text(
                     "Popüler Ligler",
                     style: TextStyle(color: kWhiteColor, fontSize: 15),
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
           ),
           Expanded(
             child: ListView.builder(
               itemCount: leagues.length,
               itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    ListTile(
-                      title: Row(
-                        children: [
-                          Image.asset(
-                            leagues[index].flag,
-                            width: 24, // Genişliği ayarlayabilirsiniz
-                            height: 24, // Yüksekliği ayarlayabilirsiniz
-                          ),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          Text(
-                            leagues[index].name,
-                            style: const TextStyle(fontSize: 16),
-                          ),
-                        ],
+                return Padding(
+                  padding: const EdgeInsets.only(left: 8, top: 8, right: 8),
+                  child: Column(
+                    children: [
+                      InkWell(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Image.asset(
+                                  leagues[index].flag,
+                                  width: 24, // Genişliği ayarlayabilirsiniz
+                                  height: 24, // Yüksekliği ayarlayabilirsiniz
+                                ),
+                                const SizedBox(
+                                  width: 8,
+                                ),
+                                Text(
+                                  leagues[index].name,
+                                  style: const TextStyle(fontSize: 16),
+                                ),
+                              ],
+                            ),
+                            const Icon(Icons.chevron_right, color: Colors.black)
+                          ],
+                        ),
+                        // Boşlukları ayarlayabilirsiniz
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => MyTabBarWithButtons(
+                              leagueID: leagues[index].id,
+                              leagueLogo: leagues[index].leagueLogo,
+                              leagueName: leagues[index].name,
+                            ),
+                          ));
+                        },
+                        // trailing: const Icon(Icons.chevron_right,
+                        //     color: Colors.black), // Sağ ok eklemek için
                       ),
-                      // Boşlukları ayarlayabilirsiniz
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => MyTabBarWithButtons(
-                            leagueID: leagues[index].id,
-                            leagueLogo: leagues[index].leagueLogo,
-                            leagueName: leagues[index].name,
-                          ),
-                        ));
-                      },
-                      trailing: const Icon(Icons.chevron_right,
-                          color: Colors.black), // Sağ ok eklemek için
-                    ),
-                    const Divider(
-                      color: Colors.grey, // Çizgi rengini ayarlayabilirsiniz
-                      thickness: 1, // Çizgi kalınlığını ayarlayabilirsiniz
-                      indent: 16, // Çizginin sol tarafındaki boşluk
-                      endIndent: 16, // Çizginin sağ tarafındaki boşluk
-                    ),
-                  ],
+                      const Divider(
+                        color: kGreyColor, // Çizgi rengini ayarlayabilirsiniz
+                        thickness: 1, // Çizgi kalınlığını ayarlayabilirsiniz
+                        indent: 2, // Çizginin sol tarafındaki boşluk
+                        endIndent: 8, // Çizginin sağ tarafındaki boşluk
+                      ),
+                    ],
+                  ),
                 );
               },
             ),

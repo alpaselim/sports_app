@@ -11,29 +11,20 @@ Widget matchTitle(LiveScore match) {
   var winnerAwayTeam = match.away.winner;
   winnerAwayTeam ??= false;
 
-  String status;
+  String status = "";
   Color statusColor = kBlackColor;
 
   String dateStr = match.fixture.date;
   DateTime dateTime = DateTime.parse(dateStr).add(const Duration(hours: 3));
-
   String startTime = DateFormat('HH:mm').format(dateTime);
 
-  if (match.fixture.status.short == "FT") {
-    status = "MS";
-  } else if (match.fixture.status.short == "NS") {
+  if (match.fixture.status.short == "NS") {
     status = startTime;
-  } else if (match.fixture.status.short == "HT") {
-    status = "DA";
-  } else if (match.fixture.status.short == "PEN") {
-    status = "PEN";
-  } else if (match.fixture.status.short == "TBD") {
-    status = "TBD";
-  } else if (match.fixture.status.short == "PST") {
-    status = "ERT";
-  } else {
+  } else if (status == "1H" || status == "2H") {
     status = "${match.fixture.status.elapsedTime}'";
     statusColor = kRedColor;
+  } else {
+    status = match.fixture.status.short;
   }
 
   return Column(

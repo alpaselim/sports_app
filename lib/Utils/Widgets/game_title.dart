@@ -11,7 +11,7 @@ Widget gameTitle(BasketballGamesModel match) {
   var winnerAwayTeam = match.away.winner;
   winnerAwayTeam ??= false;
 
-  String status;
+  String status = match.status.short;
   Color statusColor = kBlackColor;
 
   String dateStr = match.date;
@@ -19,21 +19,16 @@ Widget gameTitle(BasketballGamesModel match) {
 
   String startTime = DateFormat('HH:mm').format(dateTime);
 
-  if (match.status.short == "FT") {
-    status = "MS";
-  } else if (match.status.short == "NS") {
+  if (status == "NS") {
     status = startTime;
-  } else if (match.status.short == "HT") {
-    status = "DA";
-  } else if (match.status.short == "PEN") {
-    status = "PEN";
-  } else if (match.status.short == "AOT") {
-    status = "UZ";
-  } else if (match.status.short == "PST") {
-    status = "ERT";
-  } else {
-    status = "${match.status.short} ${match.status.timer ?? ""} ";
+  } else if (status == "Q1" ||
+      status == "Q2" ||
+      status == "Q3" ||
+      status == "Q4") {
+    status = "${match.status.short} ${match.status.timer ?? ""}' ";
     statusColor = kRedColor;
+  } else {
+    status = match.status.short;
   }
 
   return Column(
