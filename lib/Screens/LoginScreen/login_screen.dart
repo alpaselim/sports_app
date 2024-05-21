@@ -112,6 +112,14 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       decoration: const InputDecoration(
         hintText: "E-Posta",
+        contentPadding: EdgeInsets.all(12.0),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(color: kBlackColor),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: kBlackColor),
+        ),
+        errorStyle: TextStyle(height: 0),
       ),
     );
   }
@@ -130,6 +138,14 @@ class _LoginScreenState extends State<LoginScreen> {
       obscureText: !_passwordVisible,
       decoration: InputDecoration(
         hintText: 'Şifre',
+        contentPadding: const EdgeInsets.all(12.0),
+        border: const OutlineInputBorder(
+          borderSide: BorderSide(color: kBlackColor),
+        ),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: kBlackColor),
+        ),
+        errorStyle: const TextStyle(height: 0),
         suffixIcon: IconButton(
           icon: Icon(
             _passwordVisible ? Icons.visibility : Icons.visibility_off,
@@ -304,6 +320,23 @@ class _LoginScreenState extends State<LoginScreen> {
               )
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  InputDecoration customInputDecoration(String hintText) {
+    return InputDecoration(
+      hintText: hintText,
+      hintStyle: const TextStyle(color: Colors.grey),
+      enabledBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.grey,
+        ),
+      ),
+      focusedBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.grey,
         ),
       ),
     );

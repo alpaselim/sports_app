@@ -52,12 +52,15 @@ Widget selectedMatchTitle(LiveScore match) {
           width: 10,
         ),
 
-        Text(
-          match.home.name.toUpperCase(),
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: kBlackColor,
-            fontSize: 14,
+        SizedBox(
+          width: 100,
+          child: Text(
+            match.home.name.toUpperCase(),
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: kBlackColor,
+              fontSize: 14,
+            ),
           ),
         ),
 
@@ -97,12 +100,15 @@ Widget selectedMatchTitle(LiveScore match) {
 
         // Sağ taraftaki takım
 
-        Text(
-          match.away.name.toUpperCase(),
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            color: kBlackColor,
-            fontSize: 14,
+        SizedBox(
+          width: 100,
+          child: Text(
+            match.away.name.toUpperCase(),
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: kBlackColor,
+              fontSize: 14,
+            ),
           ),
         ),
 

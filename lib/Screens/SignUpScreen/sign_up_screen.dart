@@ -116,6 +116,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
       style: const TextStyle(color: kBlackColor),
       decoration: const InputDecoration(
         hintText: "Kullanıcı Adı",
+        contentPadding: EdgeInsets.all(12.0),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(color: kBlackColor),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: kBlackColor),
+        ),
+        errorStyle: TextStyle(height: 0),
       ),
     );
   }
@@ -138,6 +146,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
       },
       decoration: const InputDecoration(
         hintText: "E-Posta Adresi",
+        contentPadding: EdgeInsets.all(12.0),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(color: kBlackColor),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: kBlackColor),
+        ),
+        errorStyle: TextStyle(height: 0),
       ),
     );
   }
@@ -156,6 +172,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
       obscureText: !_passwordVisible,
       decoration: InputDecoration(
         hintText: 'Şifre',
+        contentPadding: const EdgeInsets.all(12.0),
+        border: const OutlineInputBorder(
+          borderSide: BorderSide(color: kBlackColor),
+        ),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: kBlackColor),
+        ),
         errorStyle: const TextStyle(height: 0),
         suffixIcon: IconButton(
           icon: Icon(

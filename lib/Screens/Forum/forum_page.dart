@@ -86,7 +86,7 @@ class _ForumPageState extends State<ForumPage> {
     User? user = FirebaseAuth.instance.currentUser;
     if (commentContent.isNotEmpty) {
       await _commentService.addCommentToMatch(
-          widget.matchId, currentUserName ?? 'Anonymous', commentContent);
+          widget.matchId, user?.displayName ?? 'Anonymous', commentContent);
       _commentController.clear();
       FutureBuilder<UserModel?>(
         future: fireStoreService.getUserById(user!.uid),

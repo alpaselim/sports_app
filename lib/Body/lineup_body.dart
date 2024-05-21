@@ -40,9 +40,12 @@ class _LineUpBodyState extends State<LineUpBody> {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   backgroundColor:
-                      selectedButtonIndex == 1 ? kLineupBlue : kLineupGrey,
+                      selectedButtonIndex == 1 ? kLineupBlue : kGreyColor,
                 ),
-                child: Text(widget.allmatches[0].team.name),
+                child: Text(
+                  widget.allmatches[0].team.name,
+                  style: const TextStyle(color: kWhiteColor),
+                ),
               ),
             ),
             const SizedBox(width: 16), // Butonlar arasına boşluk eklemek için
@@ -62,9 +65,12 @@ class _LineUpBodyState extends State<LineUpBody> {
                         20.0), // Kenarları oval yapmak için kullanılır
                   ),
                   backgroundColor:
-                      selectedButtonIndex == 2 ? kLineupBlue : kLineupGrey,
+                      selectedButtonIndex == 2 ? kLineupBlue : kGreyColor,
                 ),
-                child: Text(widget.allmatches[1].team.name),
+                child: Text(
+                  widget.allmatches[1].team.name,
+                  style: const TextStyle(color: kWhiteColor),
+                ),
               ),
             ),
           ],

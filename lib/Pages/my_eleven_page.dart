@@ -137,12 +137,12 @@ class _myElevenState extends State<myEleven>
                         ),
                         Image.asset(
                           "assets/images/benimonbirim.jpg",
-                          width: 100,
+                          width: 60,
                           height: 100,
                         ),
                       ],
                     ),
-                    coachAlignment(-270, 0, 0, 620, photo, playerName[11],
+                    coachAlignment(-250, 0, 0, 630, photo, playerName[11],
                         11), // TeknikDirektör
                     playerAlignment(0, 0, 0, 450, playerPhotos[0],
                         playerName[0], 0), // Kaleci
@@ -201,18 +201,14 @@ class _myElevenState extends State<myEleven>
         ),
       ),
       suggestionsCallback: (pattern) async {
-        //   if (pattern.isNotEmpty) {
         // Kullanıcı bir şey yazdığında önerileri getir
         return await SoccerApi()
             .getSuggestion(pattern); // getSuggestion, getPlayers
-        //    } else {
-        // Kullanıcı bir şey yazmadığında boş bir liste döndür
-        //      return [];
-        //   }
       },
       itemBuilder: (context, suggestion) {
         return ListTile(
           leading: CircleAvatar(
+            radius: 20,
             backgroundImage: NetworkImage(suggestion.logo),
           ),
           title: Text(

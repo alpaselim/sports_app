@@ -22,7 +22,7 @@ class _FixtureScreenState extends State<FixtureScreen> {
     'x-rapidapi-host': "v3.football.api-sports.io",
     'x-rapidapi-key': "c886db8dc289d7973187aef5780213c6",
   };
-  int currentWeek = 20;
+  int currentWeek = 22;
   List<LiveScore> fixtures = [];
 
   Future<void> fetchFixtures(
@@ -65,7 +65,7 @@ class _FixtureScreenState extends State<FixtureScreen> {
     return Container(
       color: kWhiteColor,
       child: Padding(
-        padding: const EdgeInsets.all(6.0),
+        padding: const EdgeInsets.all(5.0),
         child: Column(
           children: <Widget>[
             Row(

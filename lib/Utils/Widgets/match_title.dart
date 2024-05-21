@@ -11,7 +11,7 @@ Widget matchTitle(LiveScore match) {
   var winnerAwayTeam = match.away.winner;
   winnerAwayTeam ??= false;
 
-  String status = "";
+  String status = match.fixture.status.short;
   Color statusColor = kBlackColor;
 
   String dateStr = match.fixture.date;
